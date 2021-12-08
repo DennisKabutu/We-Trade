@@ -25,38 +25,42 @@ import com.example.androiddevchallenge.R
 
 // Set of Material typography styles to start with
 
-val Montserrat = FontFamily(Font(R.font.montserrat_medium)
-)
+val MontserratMedium = FontFamily(Font(R.font.montserrat_medium))
+val MontserratSemibold = FontFamily(Font(R.font.montserrat_semibold))
+val MontserratExtraBold = FontFamily(Font(R.font.montserrat_extrabold))
+val MontserratLight= FontFamily(Font(R.font.montserrat_light))
+val MontserratBold = FontFamily(Font(R.font.montserrat_bold))
+
 
 val Typography = Typography(
     h1 = TextStyle(
-        fontFamily = Montserrat,
+        fontFamily = MontserratExtraBold,
         fontWeight = FontWeight.ExtraBold,
         fontSize = 40.sp,
         letterSpacing = 1.25.sp
     ),
     h2 = TextStyle(
-        fontFamily = Montserrat,
+        fontFamily = MontserratExtraBold,
         fontWeight = FontWeight.ExtraBold,
         fontSize = 36.sp,
     ),
     h3 =TextStyle(
-        fontFamily = Montserrat,
+        fontFamily = MontserratSemibold ,
         fontWeight = FontWeight.SemiBold,
         fontSize = 13.sp
     ),
     subtitle1 = TextStyle(
-        fontFamily = Montserrat,
+        fontFamily = MontserratMedium,
         fontWeight = FontWeight.Medium,
         fontSize = 13.sp
     ),
     body1 = TextStyle(
-        fontFamily = Montserrat,
+        fontFamily = MontserratLight,
         fontWeight = FontWeight.Light,
         fontSize = 13.sp
     ),
     button = TextStyle(
-        fontFamily = Montserrat,
+        fontFamily = MontserratBold,
         fontSize = 13.sp,
         letterSpacing = 1.25.sp,
         fontWeight = FontWeight.Bold,
