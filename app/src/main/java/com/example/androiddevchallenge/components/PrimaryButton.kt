@@ -1,7 +1,5 @@
 package com.example.androiddevchallenge.components
 
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -12,10 +10,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun PrimaryButton(modifier: Modifier, buttonText:String) {
+fun PrimaryButton(modifier: Modifier, buttonText:String,onClick: ()->Unit) {
     Button(
         modifier = modifier,
-        onClick = {},
+        onClick = onClick,
         shape = RoundedCornerShape(size = 24.dp),
         colors = ButtonDefaults.buttonColors(
             backgroundColor = MaterialTheme.colors.primary,
