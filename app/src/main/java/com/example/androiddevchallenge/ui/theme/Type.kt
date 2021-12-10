@@ -32,7 +32,9 @@ val MontserratLight= FontFamily(Font(R.font.montserrat_light))
 val MontserratBold = FontFamily(Font(R.font.montserrat_bold))
 
 
-val Typography = Typography(
+val Typography: Typography = Typography(
+    defaultFontFamily= FontFamily(Font(R.font.montserrat_medium)),
+
     h1 = TextStyle(
         fontFamily = MontserratExtraBold,
         fontWeight = FontWeight.ExtraBold,
