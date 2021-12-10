@@ -4,6 +4,7 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Mail
@@ -16,6 +17,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.androiddevchallenge.components.CredentialsInputForm
 import com.example.androiddevchallenge.components.PrimaryButton
 import com.example.androiddevchallenge.ui.theme.MyTheme
@@ -24,12 +26,15 @@ import java.util.*
 
 // To represent The Whole Log in Screen
 @Composable
-fun LogInScreen() {
-    Column(modifier = Modifier.fillMaxSize()) {
-        WelcomeBackSection()
-        LogInCredentialsInputSection()
+fun LogInScreen(navHostController: NavHostController) {
+    Surface{
+        Column(modifier = Modifier.fillMaxSize()) {
+            WelcomeBackSection()
+            LogInCredentialsInputSection(navHostController)
 
+        }
     }
+
 }
 
 //Welcome Back section
@@ -67,7 +72,7 @@ fun LoginScreenPreview() {
 
         Column(modifier = Modifier.fillMaxSize()) {
             WelcomeBackSection()
-            LogInCredentialsInputSection()
+          //  LogInCredentialsInputSection(navHostController)
 
         }
 
@@ -78,7 +83,7 @@ fun LoginScreenPreview() {
 // CredentialInput form to house the password and email input form
 
 @Composable
-fun LogInCredentialsInputSection() {
+fun LogInCredentialsInputSection(navHostController: NavHostController) {
     Column(
         modifier = Modifier.padding(horizontal = 16.dp)
     ) {
@@ -101,7 +106,7 @@ fun LogInCredentialsInputSection() {
 
         )
         Spacer(modifier = Modifier.height(height = 16.dp))
-        ButtonLogIn()
+        ButtonLogIn(navHostController)
 
     }
 }
@@ -109,11 +114,13 @@ fun LogInCredentialsInputSection() {
 //Log in Button
 
 @Composable
-fun ButtonLogIn() {
+fun ButtonLogIn(navHostController: NavHostController) {
     PrimaryButton(
+        onClick= {navHostController.navigate("home screen")},
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp), buttonText = "log in".toUpperCase(Locale.getDefault())
+
     )
 
 }
