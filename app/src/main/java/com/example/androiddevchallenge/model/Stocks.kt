@@ -1,6 +1,8 @@
-package com.example.androiddevchallenge
+package com.example.androiddevchallenge.model
 
-data class Positions(
+import com.example.androiddevchallenge.R
+
+data class Stocks(
     val abbre: String,
     val fullName: String,
     val gain: Double,
@@ -9,8 +11,8 @@ data class Positions(
 )
 
 
-val CompaniesPosition = listOf<Positions>(
-    Positions(
+val CompaniesPosition = listOf<Stocks>(
+    Stocks(
         abbre = "ALK",
         fullName = "Alaska Air Group, Inc.",
         gain = -0.54,
@@ -18,7 +20,7 @@ val CompaniesPosition = listOf<Positions>(
         graph = R.drawable.home_alk
 
     ),
-    Positions(
+    Stocks(
         abbre = "BA",
         fullName = "Boeing Co.",
         gain = +4.18,
@@ -26,7 +28,7 @@ val CompaniesPosition = listOf<Positions>(
         graph = R.drawable.home_ba
 
     ),
-    Positions(
+    Stocks(
         abbre = "DAL",
         fullName = "Delta Airlines Inc.",
         gain = -0.54,
@@ -34,7 +36,7 @@ val CompaniesPosition = listOf<Positions>(
         graph = R.drawable.home_dal
 
     ),
-    Positions(
+    Stocks(
         abbre = "EXPE",
         fullName = "Expedia Group Inc.",
         gain = +2.51,
@@ -42,7 +44,7 @@ val CompaniesPosition = listOf<Positions>(
         graph = R.drawable.home_exp
 
     ),
-    Positions(
+    Stocks(
         abbre = "EADSY",
         fullName = "Airbus SE",
         gain = +1.38,
@@ -50,7 +52,7 @@ val CompaniesPosition = listOf<Positions>(
         graph = R.drawable.home_eadsy
 
     ),
-    Positions(
+    Stocks(
         abbre = "JBLU",
         fullName = "Jetblue Airways Corp",
         gain = +1.56,
@@ -58,7 +60,7 @@ val CompaniesPosition = listOf<Positions>(
         graph = R.drawable.home_jblu
 
     ),
-    Positions(
+    Stocks(
         abbre = "MAR",
         fullName = "Marriott International Inc",
         gain = +2.75,
@@ -66,7 +68,7 @@ val CompaniesPosition = listOf<Positions>(
         graph = R.drawable.home_mar
 
     ),
-    Positions(
+    Stocks(
         abbre = "CCL",
         fullName = "Carnival Corp",
         gain = + 0.14,
@@ -74,7 +76,7 @@ val CompaniesPosition = listOf<Positions>(
         graph = R.drawable.home_ccl
 
     ),
-    Positions(
+    Stocks(
         abbre = "RCL",
         fullName = "Royal Caribbean Cruises",
         gain = + 1.69,
@@ -82,7 +84,7 @@ val CompaniesPosition = listOf<Positions>(
         graph = R.drawable.home_rcl
 
     ),
-    Positions(
+    Stocks(
         abbre = "TRVL",
         fullName = "Travelocity Inc",
         gain = + 3.23,
