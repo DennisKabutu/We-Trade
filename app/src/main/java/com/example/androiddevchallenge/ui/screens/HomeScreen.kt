@@ -1,19 +1,15 @@
-package com.example.androiddevchallenge
+package com.example.androiddevchallenge.ui.screens
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.gestures.FlingBehavior
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ExpandMore
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.BottomCenter
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
@@ -22,10 +18,29 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.components.PrimaryButton
 import java.util.*
 
+
+
+//Home Screen scaffold
+
+@ExperimentalMaterialApi
+@Composable
+fun HomeScreen() {
+    BottomSheetScaffold(
+        content = { HomeScreenContent() },
+        sheetContent = { PositionScreen() },
+        sheetPeekHeight =  8.dp * 8,
+        sheetShape = RoundedCornerShape(0.dp)
+    )
+
+}
+
 // Tabs Section
+
+
 @Composable
 fun TabSection() {
     val tabList = listOf("ACCOUNTS", "WATCHLIST", "PROFILE")
@@ -108,7 +123,7 @@ fun TransactButton() {
             .fillMaxWidth()
             .height(height = 48.dp)
             .padding(horizontal = 16.dp),
-        buttonText = "Transact".toUpperCase(Locale.ROOT),
+        buttonText = "Transact".uppercase(Locale.ROOT),
         onClick = {}
     )
 
@@ -189,7 +204,9 @@ fun GraphViewOptionsItem(optionName: String, showIcon: Boolean = false) {
 @Composable
 fun GraphSection() {
     Image(
-        modifier= Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+        modifier= Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
         contentScale = ContentScale.FillBounds,
         painter = painterResource(id = R.drawable.home_illos),
         contentDescription = null,
@@ -218,17 +235,18 @@ fun PositionButton(modifier: Modifier) {
 
 
 @Composable
-fun HomeScreen() {
+fun HomeScreenContent() {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .padding(bottom = 0.dp)
     ) {
         Column(
+
             horizontalAlignment = CenterHorizontally,
             modifier = Modifier
-                .fillMaxSize()
                 .background(color = MaterialTheme.colors.background)
+
         ) {
             TabSection()
             BalanceHeader(
@@ -264,17 +282,7 @@ fun HomeScreen() {
             Spacer(modifier = Modifier.height(32.dp))
 
         }
-        PositionButton(
-            Modifier
-                .height(8.dp * 8)
-                .fillMaxWidth()
-                .paddingFromBaseline(top = 40.dp)
-                .background(color = MaterialTheme.colors.surface)
-                .align(BottomCenter)
-        )
-
     }
-
 }
 
 
