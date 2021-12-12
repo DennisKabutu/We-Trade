@@ -1,11 +1,13 @@
-package com.example.androiddevchallenge
+package com.example.androiddevchallenge.ui.screens
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,15 +17,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.androiddevchallenge.ui.theme.MyTheme
+import com.example.androiddevchallenge.model.CompaniesPosition
+import com.example.androiddevchallenge.model.Stocks
 
 @Preview(showBackground = true)
 @Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun PositionScreen() {
-    val listCompanies = CompaniesPosition
-
-    MyTheme {
+    Surface {
+        val listCompanies = CompaniesPosition
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
@@ -36,7 +38,6 @@ fun PositionScreen() {
 
     }
 
-
 }
 
 
@@ -45,7 +46,9 @@ fun PositionHeader() {
 
     Text(
         text = "Positions",
-        modifier = Modifier.paddingFromBaseline(top = 8.dp, bottom = 24.dp),
+        modifier = Modifier
+            .paddingFromBaseline(top = 40.dp, bottom = 24.dp)
+            .height(height = 8.dp * 8),
         style = MaterialTheme.typography.body1,
         color = MaterialTheme.colors.onSurface,
         textAlign = TextAlign.Center
@@ -54,21 +57,17 @@ fun PositionHeader() {
 }
 
 @Composable
-fun PositionList(listOfPositions: List<Positions>) {
+fun PositionList(listOfPositions: List<Stocks>) {
     LazyColumn {
-        items(
-            count = listOfPositions.size,
-            itemContent = {
-                listOfPositions.forEach {
-                    PositionsListItem(positions = it)
-                }
-            }
-        )
+        items(listOfPositions){positions ->
+            PositionsListItem(stocks =positions )
+
+        }
     }
 }
 
 @Composable
-fun PositionsListItem(positions: Positions) {
+fun PositionsListItem(stocks: Stocks) {
     Column(
         modifier = Modifier
             .height(56.dp)
@@ -88,14 +87,14 @@ fun PositionsListItem(positions: Positions) {
             Row {
                 Column {
                     Text(
-                        text = positions.amount,
+                        text = stocks.amount,
                         color = MaterialTheme.colors.onSurface,
                         style = MaterialTheme.typography.body1,
                         modifier = Modifier.paddingFromBaseline(top = 24.dp)
                     )
                     Text(
-                        text = if (positions.gain < 0) "${positions.gain}%" else "+${positions.gain}%",
-                        color = if (positions.gain < 0) Color.Red else Color.Green,
+                        text = if (stocks.gain < 0) "${stocks.gain}%" else "+${stocks.gain}%",
+                        color = if (stocks.gain < 0) Color.Red else Color.Green,
                         style = MaterialTheme.typography.body1,
                         modifier = Modifier.paddingFromBaseline(top = 16.dp, bottom = 16.dp)
                     )
@@ -104,13 +103,13 @@ fun PositionsListItem(positions: Positions) {
 
                 Column {
                     Text(
-                        text = positions.abbre,
+                        text = stocks.abbre,
                         style = MaterialTheme.typography.h3,
                         color = MaterialTheme.colors.onSurface,
                         modifier = Modifier.paddingFromBaseline(top = 24.dp)
                     )
                     Text(
-                        text = positions.fullName,
+                        text = stocks.fullName,
                         style = MaterialTheme.typography.body1,
                         color = MaterialTheme.colors.onSurface,
                         modifier = Modifier.paddingFromBaseline(top = 16.dp, bottom = 16.dp)
@@ -120,7 +119,7 @@ fun PositionsListItem(positions: Positions) {
             }
 
             Image(
-                painter = painterResource(id = positions.graph),
+                painter = painterResource(id = stocks.graph),
                 contentDescription = null
             )
 

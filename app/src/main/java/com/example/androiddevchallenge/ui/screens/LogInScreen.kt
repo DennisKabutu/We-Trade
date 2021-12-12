@@ -1,4 +1,4 @@
-package com.example.androiddevchallenge
+package com.example.androiddevchallenge.ui.screens
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
@@ -18,6 +18,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.components.CredentialsInputForm
 import com.example.androiddevchallenge.components.PrimaryButton
 import com.example.androiddevchallenge.ui.theme.MyTheme
@@ -119,7 +120,7 @@ fun ButtonLogIn(navHostController: NavHostController) {
         onClick= {navHostController.navigate("home screen")},
         modifier = Modifier
             .fillMaxWidth()
-            .height(48.dp), buttonText = "log in".toUpperCase(Locale.getDefault())
+            .height(48.dp), buttonText = "log in".uppercase(Locale.getDefault())
 
     )
 
